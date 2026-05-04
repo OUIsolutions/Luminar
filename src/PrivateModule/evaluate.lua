@@ -26,6 +26,8 @@ PrivateModule.evaluate = function(config)
         deps = PrivateModule.create_deps_props()
     end
 
+    env.table = env.table or table
+
     local fn, err = deps.load(code, "template", "t", env)
     if not fn then
         error("failed to load generated code: " .. tostring(err))
