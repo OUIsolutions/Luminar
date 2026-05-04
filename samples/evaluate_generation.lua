@@ -1,5 +1,5 @@
 ---@type LuminarPublicModuleClass
-local Luminar = require("release/luminar")
+local Luminar = require("Luminar")
 
 local sample = [[
 your name is {!name}
@@ -24,9 +24,8 @@ local generation = Luminar.generate({
 
 -- evaluate the generated code by loading it into a sandboxed environment
 -- that exposes the template variables
-local env = { name = "Alice", age = 12 }
+local env = { name = "Alice", age = 25 }
 setmetatable(env, { __index = _G })
-
 
 local fn, err = load(generation, "template", "t", env)
 if not fn then

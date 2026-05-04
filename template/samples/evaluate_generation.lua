@@ -1,5 +1,5 @@
----@type LuminarPublicModuleClass
-local Luminar = require("release/luminar")
+---@type PROJECT_NAMEPublicModuleClass
+local PROJECT_NAME = require("PROJECT_NAME")
 
 local sample = [[
 your name is {!name}
@@ -12,21 +12,20 @@ eval-lua: end
 
 ]]
 
-local parsed_document = Luminar.parse({
+local parsed_document = PROJECT_NAME.parse({
     content = sample,
-    props = Luminar.create_parse_props()
+    props = PROJECT_NAME.create_parse_props()
 })
 
-local generation = Luminar.generate({
+local generation = PROJECT_NAME.generate({
     parsed_document = parsed_document,
-    props = Luminar.create_generation_props()
+    props = PROJECT_NAME.create_generation_props()
 })
 
 -- evaluate the generated code by loading it into a sandboxed environment
 -- that exposes the template variables
-local env = { name = "Alice", age = 12 }
+local env = { name = "Alice", age = 25 }
 setmetatable(env, { __index = _G })
-
 
 local fn, err = load(generation, "template", "t", env)
 if not fn then

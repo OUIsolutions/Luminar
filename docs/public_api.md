@@ -103,6 +103,54 @@ local generation = Luminar.generate({
 
 ---
 
+## Evaluating the generated code
+
+`Luminar.generate()` returns a plain Lua string — a self-contained closure that, when executed, renders the template.  
+Use the standard `load()` function to compile and run it, passing a table that exposes your template variables as the chunk's environment.
+
+```lua
+local env = { name = "Alice", age = 25 }
+setmetatable(env, { __index = _G })   -- fall back to globals for built-ins
+
+local fn, err = load(generation, "template", "t", env)
+if not fn then
+    error("failed to load generated code: " .. tostring(err))
+end
+
+local result = fn()
+-- result is the rendered string
+print(result)
+```
+
+**How it works**
+
+| Step | What happens |
+|---|---|
+| `load(generation, ...)` | Compiles the generated Lua string into a callable function |
+| `env` table | Supplies the template variables (`name`, `age`, …) that the code references |
+| `setmetatable(env, {__index=_G})` | Lets the template code still call Lua built-ins (`tostring`, `pairs`, …) |
+| `fn()` | Executes the closure and returns the rendered string |
+
+**Error handling**
+
+`load` returns `nil, error_message` when the generated code has a syntax error.  
+The rendered closure itself can raise a runtime error (e.g. calling a nil variable).  
+Wrap both in `pcall` for production use:
+
+```lua
+local fn, load_err = load(generation, "template", "t", env)
+assert(fn, load_err)
+
+local ok, result = pcall(fn)
+if not ok then
+    -- result contains the runtime error message
+    error("template render failed: " .. result)
+end
+print(result)
+```
+
+---
+
 ## Luminar.create_parse_props()
 
 Returns the default parse props with `{!...}` as variable tags and `eval-lua: ...\n` as code tags.
