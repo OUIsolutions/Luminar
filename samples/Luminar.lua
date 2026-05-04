@@ -22,6 +22,8 @@ PrivateModule.create_deps_props = function()
     deps.load = load
     deps.type = type
     deps.error = error
+    deps.table = table
+
     return deps
 end
 
@@ -107,6 +109,12 @@ PrivateModule.generate = function(config)
     if not props then
         props = PrivateModule.create_generation_props()
     end
+
+    local deps = config.deps
+    if not deps then
+        deps = PrivateModule.create_deps_props()
+    end
+
     local modifiers = props.modifiers or {}
 
     local parts = {}
@@ -128,7 +136,8 @@ PrivateModule.generate = function(config)
         parts[#parts + 1] = props.after
     end
 
-    return table.concat(parts, "\n")
+    return deps.table.concat(parts, "\n")
+    
 end
 
 -- file: src/PrivateModule/get_asset.lua

@@ -19,11 +19,40 @@
 
 ### Overview
 
-
+**Luminar** is a lightweight, embeddable Lua template engine that lets you mix plain text with variables and Lua code blocks. It works by parsing a template string into typed nodes, generating a self-contained Lua closure from those nodes, and evaluating the closure against a provided environment table — all without external dependencies.
 
 ### Key Features
 
+- **Simple syntax** — embed variables with `{!name}` and Lua code blocks with `eval-lua: ...`
+- **Pure Lua** — single-file library, no C extensions or external dependencies
+- **Customizable** — bring your own delimiters and generation modifiers via `parse_props` / `generation_props`
+- **Safe evaluation** — templates run in an isolated environment table; globals are only exposed when you opt in
+- **High-level API** — `Luminar.evaluate()` handles parse → generate → load → run in one call
+- **Cross-platform** — works on Windows, Linux, and macOS
 
+## Quick Example
+
+```lua
+---@type LuminarPublicModuleClass
+local Luminar = require("Luminar")
+
+
+local result = Luminar.evaluate({
+    template=[[
+    your name is {!name}
+
+    eval-lua: if age > 18 then
+        <h1>you are an adult</h1>
+    eval-lua: else
+        <h1>you are not an adult</h1>
+    eval-lua: end
+
+    ]],
+    env={ name = "Alice", age = 12 }
+})
+
+print(result)
+```
 
 ## Releases
 
