@@ -30,7 +30,6 @@ PrivateModule.evaluate = function(config)
     if not fn then
         error("failed to load generated code: " .. tostring(err))
     end
-    print('dddd')
     local result = fn()
     return result
 end

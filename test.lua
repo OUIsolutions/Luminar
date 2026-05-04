@@ -21,7 +21,7 @@ local generation = Luminar.generate({
     parsed_document = parsed_document,
     props = Luminar.create_generation_props()
 })
-
+print(generation)
 -- evaluate the generated code by loading it into a sandboxed environment
 -- that exposes the template variables
 local env = { name = "Alice", age = 12 }

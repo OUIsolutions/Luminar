@@ -24,18 +24,17 @@ local generation = PROJECT_NAME.generate({
 
 -- evaluate the generated code by loading it into a sandboxed environment
 -- that exposes the template variables
-local env = { name = "Alice", age = 25 }
-setmetatable(env, { __index = _G })
+local env = { name = "Alice", age = 12 }
+local result = PROJECT_NAME.evaluate({
+    code=generation,
+    env=env,
+    deps= {
+        setmetatable = setmetatable,
+        load = load,
+        type = type,
+        error = error,
+        table = table
+    }
+})
 
-local fn, err = load(generation, "template", "t", env)
-if not fn then
-    error("failed to load generated code: " .. tostring(err))
-end
-
-local result = fn()
 print(result)
-
--- expected output:
--- your name is Alice
---
---     <h1>you are an adult</h1>
