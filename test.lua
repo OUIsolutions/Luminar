@@ -36,9 +36,3 @@ local result = Luminar.evaluate({
     }
 })
 
-print(result)
-
--- expected output:
--- your name is Alice
---
---     <h1>you are an adult</h1>
