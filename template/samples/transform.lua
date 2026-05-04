@@ -12,7 +12,7 @@ eval-lua: end
 
 ]]
 
-local transform = PROJECT_NAME.transform({
+local parsed_document = PROJECT_NAME.parse({
     content=sample,
     non_tag="text",
     entries = { 
@@ -20,8 +20,8 @@ local transform = PROJECT_NAME.transform({
         {type="code",start_tag="eval-lua: ",end_tag="\n"},
     }
 })
-for i=1, #transform do
-    local current = transform[i]
+for i=1, #parsed_document do
+    local current = parsed_document[i]
     --types can be "code"(eval-lua), "variable"({!var}), "text"
     print("type: " .. current.type)  
     print(current.content)
