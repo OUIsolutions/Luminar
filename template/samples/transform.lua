@@ -14,11 +14,14 @@ eval-lua: end
 
 local parsed_document = PROJECT_NAME.parse({
     content=sample,
-    non_tag="text", 
-    entries = { 
-        {type="variable",start_tag="{!",end_tag="}"},
-        {type="code",start_tag="eval-lua: ",end_tag="\n"},
+    props= {
+            non_tag="text", 
+            entries = { 
+                {type="variable",start_tag="{!",end_tag="}"},
+                {type="code",start_tag="eval-lua: ",end_tag="\n"},
+            }
     }
+   
 })
 for i=1, #parsed_document do
     local current = parsed_document[i]

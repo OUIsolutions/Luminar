@@ -14,32 +14,14 @@ eval-lua: end
 
 local parsed_document = PROJECT_NAME.parse({
     content=sample,
-    props= {
-            non_tag="text", 
-            entries = { 
-                {type="variable",start_tag="{!",end_tag="}"},
-                {type="code",start_tag="eval-lua: ",end_tag="\n"},
-            }
-    }
+    props= PROJECT_NAME.create_parse_props()
 })
+
 local generation = PROJECT_NAME.generate({
     parsed_document=parsed_document,
-    props={
-        before= "return (function() local internal_PROJECT_NAME_amalgamation = {}",
-        after= "return table.concat(internal_PROJECT_NAME_amalgamation,'') end)()",
-        modifiers ={
-            variable={
-                before= "internal_PROJECT_NAME_amalgamation[#internal_PROJECT_NAME_amalgamation+1] = ",
-                after = ";"
-            },
-            text={
-                before= "internal_PROJECT_NAME_amalgamation[#internal_PROJECT_NAME_amalgamation+1] = [[ ",
-                after = " ]];"  
-            }
-        }
-    }
+    props= PROJECT_NAME.create_generation_props()
 
-})  
+})
 
 --- expected
 --- return (function() local internal_PROJECT_NAME_amalgamation = {}
