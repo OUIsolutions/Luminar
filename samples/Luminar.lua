@@ -13,6 +13,19 @@ local PrivateModule = {}
 -- file: src/PublicModule/.gitkeep
 
 
+-- file: src/PrivateModule/create_deps_props.lua
+
+
+PrivateModule.create_deps_props = function()
+    local deps = {}
+    deps.setmetatable = setmetatable    
+    deps.load = load
+    deps.type = type
+    deps.error = error
+    return deps
+end
+
+
 -- file: src/PrivateModule/create_generation_props.lua
 
 
@@ -46,12 +59,41 @@ PrivateModule.create_parse_props = function()
     }
 end
 
+-- file: src/PrivateModule/evaluate.lua
+
+
+PrivateModule.evaluate = function(config)
+    local code = config.code
+    local env = config.env
+    local deps = config.deps
+    if not env then
+        env = {}
+    end
+    if not deps then
+        deps = PrivateModule.create_deps_props()
+    end
+
+
+
+
+    
+
+    local fn, err = deps.load(code, "template", "t", env)
+    if not fn then
+        error("failed to load generated code: " .. tostring(err))
+    end
+    local result = fn()
+    return result
+end
 -- file: src/PrivateModule/generate.lua
 
 
 PrivateModule.generate = function(config)
     local parsed_document = config.parsed_document
     local props = config.props
+    if not props then
+        props = PrivateModule.create_generation_props()
+    end
     local modifiers = props.modifiers or {}
 
     local parts = {}
@@ -95,8 +137,10 @@ PrivateModule.lib_start = function()
     local PublicModule = {}
     PublicModule.parse                 = PrivateModule.parse
     PublicModule.generate              = PrivateModule.generate
+    PublicModule.evaluate              = PrivateModule.evaluate
     PublicModule.create_parse_props    = PrivateModule.create_parse_props
     PublicModule.create_generation_props = PrivateModule.create_generation_props
+    PublicModule.create_deps_props     = PrivateModule.create_deps_props
     return PublicModule
 end
 
@@ -106,6 +150,9 @@ end
 PrivateModule.parse = function(config)
     local content = config.content
     local props = config.props
+    if not props then
+        props = PrivateModule.create_parse_props()
+    end
     local non_tag_type = props.non_tag or "text"
     local entries = props.entries or {}
 

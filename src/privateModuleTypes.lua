@@ -6,3 +6,5 @@
 ---@field create_generation_props fun(): PROJECT_NAME_GenerationProps
 ---@field get_asset fun(name: string): string|nil
 ---@field lib_start fun(): PROJECT_NAMEPublicModuleClass
+---@field evaluate fun(config: {code: string, env: table, deps:PROJECT_NAME_Dependencies}): string | any
+---@field create_deps_props fun(): PROJECT_NAME_Dependencies
