@@ -70,6 +70,11 @@ To install the library, you just need to download it and import it with `require
 curl -L "PROJECT_REPO/releases/download/PROJECT_VERSION/PROJECT_NAME.lua" -o "PROJECT_NAME.lua"
 ```
 
+### Download the type annotations
+```bash
+curl -L "PROJECT_REPO/releases/download/PROJECT_VERSION/PROJECT_NAMETypes.lua" -o "PROJECT_NAMETypes.lua"
+```
+
 ### Import the lib
 ```lua
 local PROJECT_NAME = require("PROJECT_NAME")

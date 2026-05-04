@@ -70,6 +70,11 @@ To install the library, you just need to download it and import it with `require
 curl -L "https://github.com/OUIsolutions/Luminar/releases/download/0.0.1/Luminar.lua" -o "Luminar.lua"
 ```
 
+### Download the type annotations
+```bash
+curl -L "https://github.com/OUIsolutions/Luminar/releases/download/0.0.1/LuminarTypes.lua" -o "LuminarTypes.lua"
+```
+
 ### Import the lib
 ```lua
 local Luminar = require("Luminar")
