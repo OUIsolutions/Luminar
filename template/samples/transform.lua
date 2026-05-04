@@ -14,7 +14,7 @@ eval-lua: end
 
 local parsed_document = PROJECT_NAME.parse({
     content=sample,
-    non_tag="text",
+    non_tag="text", 
     entries = { 
         {type="variable",start_tag="{!",end_tag="}"},
         {type="code",start_tag="eval-lua: ",end_tag="\n"},
@@ -22,7 +22,6 @@ local parsed_document = PROJECT_NAME.parse({
 })
 for i=1, #parsed_document do
     local current = parsed_document[i]
-    --types can be "code"(eval-lua), "variable"({!var}), "text"
     print("type: " .. current.type)  
     print(current.content)
 end
