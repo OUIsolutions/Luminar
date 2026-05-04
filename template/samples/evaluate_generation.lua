@@ -28,12 +28,16 @@ local env = { name = "Alice", age = 12 }
 local result = PROJECT_NAME.evaluate({
     code=generation,
     env=env,
+    props= {
+        parse_props = PROJECT_NAME.create_parse_props(),
+        generation_props = PROJECT_NAME.create_generation_props(),
+    },
     deps= {
         setmetatable = setmetatable,
         load = load,
         type = type,
         error = error,
-        table = table
+        table=table
     }
 })
 

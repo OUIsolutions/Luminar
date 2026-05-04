@@ -28,12 +28,16 @@ local env = { name = "Alice", age = 12 }
 local result = Luminar.evaluate({
     code=generation,
     env=env,
+    props= {
+        parse_props = Luminar.create_parse_props(),
+        generation_props = Luminar.create_generation_props(),
+    },
     deps= {
         setmetatable = setmetatable,
         load = load,
         type = type,
         error = error,
-        table = table
+        table=table
     }
 })
 
