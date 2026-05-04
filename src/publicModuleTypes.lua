@@ -34,5 +34,5 @@
 ---@field generate fun(config: {parsed_document: PROJECT_NAME_ParsedNode[], props: PROJECT_NAME_GenerationProps | nil}): string
 ---@field create_parse_props fun(): PROJECT_NAME_ParseProps
 ---@field create_generation_props fun(): PROJECT_NAME_GenerationProps
----@field evaluate fun(config: {code: string, env: table, deps:PROJECT_NAME_Dependencies}): string | any
+---@field evaluate fun(config: {template: string, generation_props: PROJECT_NAME_GenerationProps | nil, parse_props: PROJECT_NAME_ParseProps | nil, env: table, deps:PROJECT_NAME_Dependencies}): string | any
 ---@field create_deps_props fun(): PROJECT_NAME_Dependencies
