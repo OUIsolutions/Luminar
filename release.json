@@ -1,5 +1,5 @@
 {
-	"assets":	["release/luminar.lua", "release/luminarTypes.lua"],
+	"assets":	["release/Luminar.lua", "release/LuminarTypes.lua"],
 	"description":	"second release",
     "replacers":{
     },

@@ -1,6 +1,6 @@
 # Building from Source
 
-This guide explains how to build **luminar.lua** from the source code.
+This guide explains how to build **Luminar.lua** from the source code.
 If you just want to use the library, grab the pre-built release from the [Releases](#) page instead.
 
 ---
@@ -50,7 +50,7 @@ Once Darwin is installed, run the following command from the **root of the repos
 darwin run_blueprint --target all
 ```
 
-This will generate **luminar.lua** inside the `release/` folder.
+This will generate **Luminar.lua** inside the `release/` folder.
 
 ---
 

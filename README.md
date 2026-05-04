@@ -1,8 +1,8 @@
 <div align="center">
 
-# luminar
-![Lua Logo](https://img.shields.io/badge/luminar-0.0.0-blue?style=for-the-badge&logo=lua)
-[![GitHub Release](https://img.shields.io/github/release/OUIsolutions/luminar.svg?style=for-the-badge)](https://github.com/OUIsolutions/Luminar/releases)
+# Luminar
+![Lua Logo](https://img.shields.io/badge/Luminar-0.0.0-blue?style=for-the-badge&logo=lua)
+[![GitHub Release](https://img.shields.io/github/release/OUIsolutions/Luminar.svg?style=for-the-badge)](https://github.com/OUIsolutions/Luminar/releases)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://github.com/OUIsolutions/Luminar/blob/main/LICENSE)
 ![Status](https://img.shields.io/badge/Status-Alpha-orange?style=for-the-badge)
 ![Platforms](https://img.shields.io/badge/Platforms-Windows%20|%20Linux%20|%20macOS-lightgrey?style=for-the-badge)
@@ -29,8 +29,8 @@
 
 | **File** | **Description** |
 |----------|-----------------|
-| [luminar.lua](https://github.com/OUIsolutions/Luminar/releases/download/0.0.0/luminar.lua) | The library in plain lua code |
-| [luminarTypes.lua](https://github.com/OUIsolutions/Luminar/releases/download/0.0.0/luminarTypes.lua) | The library type annotations |
+| [Luminar.lua](https://github.com/OUIsolutions/Luminar/releases/download/0.0.0/Luminar.lua) | The library in plain lua code |
+| [LuminarTypes.lua](https://github.com/OUIsolutions/Luminar/releases/download/0.0.0/LuminarTypes.lua) | The library type annotations |
 
 ## Installation Tutorials
 
@@ -38,12 +38,12 @@ To install the library, you just need to download it and import it with `require
 
 ### Download the lib 
 ```bash
-curl -L "https://github.com/OUIsolutions/Luminar/releases/download/0.0.0/luminar.lua" -o "luminar.lua"
+curl -L "https://github.com/OUIsolutions/Luminar/releases/download/0.0.0/Luminar.lua" -o "Luminar.lua"
 ```
 
 ### Import the lib
 ```lua
-local luminar = require("luminar")
+local Luminar = require("Luminar")
 ```
 
 ## [Public API](docs/public_api.md)
