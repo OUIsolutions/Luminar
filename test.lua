@@ -1,5 +1,5 @@
 ---@type LuminarPublicModuleClass
-local Luminar = require("release/luminar")
+local Luminar = require("release/Luminar")
 
 local sample = [[
 your name is {!name}
@@ -31,7 +31,8 @@ local result = Luminar.evaluate({
     deps= {
         setmetatable = setmetatable,
         load = load,
-        type = type
+        type = type,
+        error = error
     }
 })
 
