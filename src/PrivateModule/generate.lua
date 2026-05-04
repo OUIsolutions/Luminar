@@ -2,6 +2,9 @@
 PrivateModule.generate = function(config)
     local parsed_document = config.parsed_document
     local props = config.props
+    if not props then
+        props = PrivateModule.create_generation_props()
+    end
     local modifiers = props.modifiers or {}
 
     local parts = {}

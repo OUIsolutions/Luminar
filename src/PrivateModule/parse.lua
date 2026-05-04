@@ -2,6 +2,9 @@
 PrivateModule.parse = function(config)
     local content = config.content
     local props = config.props
+    if not props then
+        props = PrivateModule.create_parse_props()
+    end
     local non_tag_type = props.non_tag or "text"
     local entries = props.entries or {}
 
