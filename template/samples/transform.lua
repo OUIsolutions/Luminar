@@ -5,9 +5,9 @@ local sample = [[
 your name is {!name}
 
 eval-lua: if age > 18 then 
-    <h1>you are adult</h1>
+    <h1>you are an adult</h1>
 eval-lua: else 
-    <h1>you are not adult</h1>
+    <h1>you are not an adult</h1>
 eval-lua: end
 
 ]]
