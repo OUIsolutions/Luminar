@@ -9,8 +9,8 @@ PrivateModule.create_generation_props = function()
                 after  = ";"
             },
             text = {
-                before = "internal_PROJECT_NAME_amalgamation[#internal_PROJECT_NAME_amalgamation+1] = [[ ",
-                after  = " ]];"
+                before = "internal_PROJECT_NAME_amalgamation[#internal_PROJECT_NAME_amalgamation+1] = [[",
+                after  = "]];"
             }
         }
     }

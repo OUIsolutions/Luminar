@@ -41,8 +41,8 @@ PrivateModule.create_generation_props = function()
                 after  = ";"
             },
             text = {
-                before = "internal_Luminar_amalgamation[#internal_Luminar_amalgamation+1] = [[ ",
-                after  = " ]];"
+                before = "internal_Luminar_amalgamation[#internal_Luminar_amalgamation+1] = [[",
+                after  = "]];"
             }
         }
     }
